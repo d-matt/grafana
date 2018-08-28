@@ -76,10 +76,10 @@
     path="{{ grafana_pid_file_dir }}"
     owner="{{ grafana_user }}"
     group="{{ grafana_group }}"
-    mode=0755
+    mode=0750
     state=directory
   become: yes
-    
+
 - name: ensure grafana directories ownership and permissions
   file:
     path="{{ item }}"
@@ -94,7 +94,6 @@
     - "{{ grafana_dir_home }}"
     - "{{ grafana_dir_log }}"
     - "{{ grafana_dir_plugins }}"
-    - "{{ grafana_pid_file_dir }}"
 
 - name: ensure grafana is running and enabled to start on boot
   service:
